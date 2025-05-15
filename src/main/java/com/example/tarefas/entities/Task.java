@@ -1,5 +1,6 @@
 package com.example.tarefas.entities;
 
+import com.example.tarefas.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,6 +14,8 @@ public class Task {
     private Long id;
     private String titulo;
     private String descricao;
-    private Enumerated status;
+
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
 }
