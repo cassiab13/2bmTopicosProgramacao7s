@@ -5,7 +5,10 @@ import com.example.tarefas.dtos.UpdateUserPasswordDTO;
 import com.example.tarefas.dtos.UpdateUserRoleDTO;
 import com.example.tarefas.entities.Users;
 import com.example.tarefas.services.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,37 +21,38 @@ public class UserController {
     private UserService service;
 
     @PostMapping
-    public Users create(@RequestBody Users user){
-        return service.create(user);
+    public ResponseEntity<Users> create(@RequestBody Users user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(user));
     }
 
     @GetMapping("/{id}")
-    public Users findById(@PathVariable Long id){
-        return service.findById(id);
+    public ResponseEntity<Users> findById(@PathVariable Long id){
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @GetMapping
-    public List<Users> findAll(){
-        return service.findAll();
+    public ResponseEntity<List<Users>> findAll(){
+        return ResponseEntity.ok(service.findAll());
     }
 
     @PutMapping("/{id}")
-    public Users update(@PathVariable Long id, @RequestBody UpdateUserDTO dto){
-        return service.update(id, dto);
+    public ResponseEntity<Users> update(@PathVariable Long id, @RequestBody UpdateUserDTO dto){
+        return ResponseEntity.ok(service.update(id, dto));
     }
 
     @PatchMapping("/update-password/{id}")
-    public Users updatePassword(@PathVariable Long id, @RequestBody UpdateUserPasswordDTO dto){
-        return service.updatePassword(id, dto);
+    public ResponseEntity<Users> updatePassword(@PathVariable Long id, @RequestBody UpdateUserPasswordDTO dto){
+        return ResponseEntity.ok(service.updatePassword(id, dto));
     }
 
     @PatchMapping("/update-role/{id}")
-    public Users updateRole(@PathVariable Long id, @RequestBody UpdateUserRoleDTO dto){
-        return service.updateRole(id, dto);
+    public ResponseEntity<Users> updateRole(@PathVariable Long id, @RequestBody UpdateUserRoleDTO dto){
+        return ResponseEntity.ok(service.updateRole(id, dto));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id){
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
