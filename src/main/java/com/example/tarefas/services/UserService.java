@@ -50,7 +50,7 @@ public class UserService implements UserDetailsService {
 
     public Users updateRole(Long id, UpdateUserRoleDTO dto){
         Users user = this.findById(id);
-        modelMapper.map(dto, user);
+        user.setRole(dto.getRole());
         return repository.save(user);
     }
 
