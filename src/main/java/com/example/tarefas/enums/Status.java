@@ -2,7 +2,7 @@ package com.example.tarefas.enums;
 
 public enum Status {
 
-    A_FAZER,
+    PENDENTE,
     EM_PROGRESSO,
     FEITO
 
