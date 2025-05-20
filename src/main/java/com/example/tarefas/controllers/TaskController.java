@@ -3,16 +3,17 @@ package com.example.tarefas.controllers;
 import com.example.tarefas.dtos.TaskDTO;
 import com.example.tarefas.dtos.TaskResponseDTO;
 import com.example.tarefas.services.TaskService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
+@PreAuthorize("isAuthenticated()")
 public class TaskController {
 
     @Autowired

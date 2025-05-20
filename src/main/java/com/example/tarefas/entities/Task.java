@@ -19,3 +19,4 @@ public class Task {
     private Status status;
 
 }
+//TODO: Vincular o user com a task. Ver se vai pegar o usuário autenticado para vincular automaticamente. Verificar requisitos e como fazer.

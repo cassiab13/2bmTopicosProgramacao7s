@@ -5,7 +5,6 @@ import com.example.tarefas.dtos.UpdateUserPasswordDTO;
 import com.example.tarefas.dtos.UpdateUserRoleDTO;
 import com.example.tarefas.entities.Users;
 import com.example.tarefas.services.UserService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
