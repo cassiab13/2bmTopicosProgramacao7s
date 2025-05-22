@@ -1,5 +1,6 @@
 package com.example.tarefas.dtos;
 
+import com.example.tarefas.entities.Users;
 import com.example.tarefas.enums.Status;
 import lombok.Data;
 
@@ -8,4 +9,5 @@ public class TaskDTO {
     private String titulo;
     private String descricao;
     private Status status;
+    private Users user;
 }
