@@ -55,6 +55,7 @@ public class UserService implements UserDetailsService {
     public Users updatePassword(Long id, UpdateUserPasswordDTO dto){
         Users user = this.findById(id);
         modelMapper.map(dto, user);
+        user.setPassword(encoder.encode(user.getPassword()));
         return repository.save(user);
     }
 

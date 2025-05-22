@@ -1,6 +1,7 @@
 package com.example.tarefas.entities;
 
 import com.example.tarefas.enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,5 +19,10 @@ public class Task {
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private Users user;
+
 }
-//TODO: Vincular o user com a task. Ver se vai pegar o usuário autenticado para vincular automaticamente. Verificar requisitos e como fazer.
+//TODO: Não deixar criar mais de um usuário com o mesmo e-mail e tarefas com o mesmo titulo.
